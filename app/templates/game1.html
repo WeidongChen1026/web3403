@@ -18,19 +18,20 @@
 </head>
 
 <body>
-  <h5 style="text-align:right">Model: <button id="easy" onclick="change_model(10)">Easy</button>&emsp;<button  id="hard" onclick="change_model(5)">Hard</button >&emsp;<button  id="diff" onclick="change_model(2)">Difficult</button ></h5>
+  <h5 style="text-align:right"><button id="rank" onclick="showRank()">Rank</button>&emsp;Model: <button id="easy" onclick="change_model(10)">Easy</button>&emsp;<button  id="hard" onclick="change_model(5)">Hard</button >&emsp;<button  id="diff" onclick="change_model(2)">Difficult</button ></h5>
   <br>
   <h1 style="text-align:center; color:rgb(9, 9, 4);">Guess Num</h1>
-  <div style="position:relative;left:75%;" id="tb_cr"></div>
+  <div style="position:relative;left:75%;" id="tb_cr">
+  </div>
   <div style="text-align:center;">
     <h2>Welcome <span id="hahah">{{ current_user.username }}</span>. You have <span id="num_times"></span> chances</h2>
-    <input type="number" id="num_val"><a id='rd_val' hidden="hidden"></a><a id='model_val' hidden="hidden"></a></a>
+    <input type="number" id="num_val"   /><a id='rd_val' ></a><a id='model_val' hidden="hidden"></a>
     <button type="button" onclick="val_check()">Enter</button>
     <button type="button" onclick="re_init()">Reload</button>
     <br>
       <div id="result"></div>
       <button id="share" style="display:none">share result?</button>
-    <p id="tips"></p>
+    <p style="color: blue; font-size: 20px;" id="tips"></p>
   </div>
 </body>
 
