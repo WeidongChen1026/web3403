@@ -1,0 +1,26 @@
+button {color:yellow; 
+    background-color:black; 
+    font-size: 18px;}
+
+a.button:hover {color: red;}
+a,button:focus {color: rgb(100, 100, 142);}
+
+.th_left {float: left;}
+
+.set_underline {text-decoration: underline;
+color: red;}
+
+body {background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-attachment: fixed;
+    background-image: url(/static/image/bg_j.jpg);
+}
+
+h1 {
+    text-align:center;
+    color:rgb(40, 164, 40);
+}
+
+table{
+    color: rgb(0, 255, 94);
+}
