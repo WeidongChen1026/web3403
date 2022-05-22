@@ -12,9 +12,7 @@ color: red;}
 
 body {background-repeat:no-repeat;
     background-size:100% 100%;
-    background-attachment: fixed;
-    background-image: url(/static/image/bg_j.jpg);
-}
+    background-attachment: fixed;}
 
 h1 {
     text-align:center;

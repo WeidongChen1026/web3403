@@ -4,8 +4,6 @@
         $("#num_times").text(10)
         $("#model_val").text(10)
 
-        $("#score_val").text(0)
-
         var temp_val = random(1,100);
         $("#rd_val").text(temp_val);
       })
@@ -24,6 +22,7 @@
 
         if(eee=="0"){
           $("#tips").text("You have no chance.");
+            pass();
         }else if(ee==""){
           $("#tips").text("Please enter the value you want to guess first!");
         }else{
@@ -33,9 +32,16 @@
           }else if(ee<e){
             $("#tips").text("Your guess is a little low");
           }else{
-            $("score_val").html($("#score_val").html()+1)
-            alert("Congratulations!!!");
-            
+            $("#tips").text("Congratulations!!!");
+            pass();
+
+            var tmp_res = "Guess number <br> The number I guessed is " + e + ", and there is still " + $("#num_times").html() + " chances remain."
+            document.getElementById("result").innerHTML= tmp_res;
+            document.getElementById("share").style.display = "inline";
+            document.getElementById('share').addEventListener('click', function() {
+              var isCopyed = copyDiv();
+              tips(isCopyed);
+		}, false);
             re_init()
 
           }
@@ -62,11 +68,13 @@
 
       function pass(){//TODO:pass the data from front-end to back-end
         var success = false;
+        var user = document.getElementById('hahah').innerHTML;
         if(document.getElementById('tips').innerHTML=="Congratulations!!!"){
            success = true;
          };
         var chance_remain = document.getElementById('num_times').innerText;
         var data = {
+                "username":user,
               "is_success": success,
               "chance_remain": chance_remain
           };
@@ -89,4 +97,3 @@
 		  selection.addRange(range);
 		  return document.execCommand('copy');
 		}
-

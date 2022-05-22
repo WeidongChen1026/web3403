@@ -58,16 +58,22 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/record')
+@app.route('/record', methods=['GET'])
 def record():
+    username = request.args.get('username', '')
     is_success = request.args.get('is_success', '')
+    if is_success == "false":
+        is_success = False
+    else:
+        is_success = True
     chance_remain = request.args.get('chance_remain', '')
+    print(username)
     print(is_success)
     print(chance_remain)
-    gRecord = gameRecord(user_name=current_user.username,chance_remain=chance_remain,is_success=is_success)
+    gRecord = gameRecord(user_name=username,chance_remain=chance_remain,is_success=is_success)
     db.session.add(gRecord)
     db.session.commit()
-    return
+    return render_template('game1.html', title='Home')
 
 @app.route('/user/<username>')
 @login_required
@@ -80,12 +86,3 @@ def profile(username):
     ]
     return render_template('profile.html', user=user,posts=posts)
 
-
-@app.route('/change_to_json', methods=['GET'])
-def change_to_json():
-    global data_get
-    data_json = {
-        "data": data_get
-    }
-
-    return jsonify(data_json)
