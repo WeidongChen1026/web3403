@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Hello</title>
+      {% else %}
+      <title>Welcome to our game</title>
+      {% endif %}
+        <style>
+            a{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Guess number:
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('game') }}">Click here to play!</a>
+            <a href="{{url_for('logout')}}">Logout</a>
+            <a href="{{ url_for('profile', username=current_user.username) }}">Profile</a>
+            {% endif %}
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+        </div>
+       <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <ol>{{ message }}</ol>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

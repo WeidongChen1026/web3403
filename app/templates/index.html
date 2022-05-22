@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="guessNum" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+ 
+
+    <title>GuessNum</title>
+ 
+    <link rel="stylesheet" type="text/css" href="index.css">
+ 
+    <script>
+        //Click event, used to jump to different pages
+        function name_check() {
+            var name = document.getElementById("username").value;
+            if(name.length != 0){
+              window.location.href='game.html?username='+name
+            }else {
+              window.alert("Please enter your user name at first!")
+            }
+        }
+    </script>
+</head>
+<!-- Set up background -->
+<body>
+  <br>
+  <h1 style="color:rgb(9, 9, 4);">Guess Num</h1>
+  <div style="text-align:center;padding:10%;">
+    <form action="" method="post">
+      <p style="font-size:28px;">Please enter your username</p>
+      <input style="color: black;" type="text" id="username" name="username">
+      <br>
+      <br>
+      <button style="width: 150px;" type="button" onclick="name_check()">Login</buttoon>
+    </form>
+  </div>
+</body>
