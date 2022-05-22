@@ -22,6 +22,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
+            print(form.password.data)
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
@@ -49,6 +50,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
+        # print(User.username)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -58,11 +60,11 @@ def register():
 
 @app.route('/record')
 def record():
-    data = json.loads(request.form.get('data'))
-    user_name = data["username"]
-    chance_remain = data["chance_remain"]
-    is_success = data["is_success"]
-    gRecord = gameRecord(user_name=user_name,chance_remain=chance_remain,is_success=is_success)
+    is_success = request.args.get('is_success', '')
+    chance_remain = request.args.get('chance_remain', '')
+    print(is_success)
+    print(chance_remain)
+    gRecord = gameRecord(user_name=current_user.username,chance_remain=chance_remain,is_success=is_success)
     db.session.add(gRecord)
     db.session.commit()
     return
@@ -77,3 +79,13 @@ def profile(username):
         {'author': user, 'record': records}
     ]
     return render_template('profile.html', user=user,posts=posts)
+
+
+@app.route('/change_to_json', methods=['GET'])
+def change_to_json():
+    global data_get
+    data_json = {
+        "data": data_get
+    }
+
+    return jsonify(data_json)

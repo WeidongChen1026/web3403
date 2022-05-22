@@ -53,21 +53,17 @@
           }else{
             $("score_val").html($("#score_val").html()+1)
             $("#tips").text("Congratulations!!!");
+            // pass();
             document.getElementById("result").innerHTML="Guess number <br> The number I guessed is(加入猜了的数字)," +
                 " and there is still (还剩几次) chances remain";
-            var share = document.createElement("share");
-            share.type = button;
-            share.id = 'share';
-            share.value = "Share result!"
-            body.appendChild(share);
+            document.getElementById("share").style.display = "inline";
             document.getElementById('share').addEventListener('click', function() {
               var isCopyed = copyDiv();
               tips(isCopyed);
 		}, false);
-            pass();//the same as previous
-            window.location.reload()
-            reload_i()
-            window.location.reload()
+            window.location.reload();
+            reload_i();
+            window.location.reload();
           }
         }
       }
@@ -84,24 +80,28 @@
 		  }
 		}
 
-      function pass(){
-        var user = $("#username");
-        var num = $("#num_times");
-        var status = false;
-        if ($("#tips").html()=="Congratulations!!!"){
-          status = true;
-        }
+      function pass(){//TODO:pass the data from front-end to back-end
+        var success = false;
+        if(document.getElementById('tips').innerHTML=="Congratulations!!!"){
+           success = true;
+         };
+        var chance_remain = document.getElementById('num_times').innerText;
         var data = {
-         data: JSON.stringify({"username": user, "chance_remain": num, "is_success": status})
-   }
-        $ajax({
-          url:"/record",
-          type:"POST",
-          data: data,
-        })
-      }
+              "is_success": success,
+              "chance_remain": chance_remain
+          };
+          $.ajax({
+              type: 'GET',
+              url: "http://localhost:5000/record",
+              data: data,
+              dataType: 'json',
+              success: function(data) {
+              },
+              error: function(xhr, type) {
+              }
+          });}
 
-      function copyDiv() {
+      function copyDiv() {//share
 		  var range = document.createRange();
 		  range.selectNode(document.getElementById("result"));
 		  var selection = window.getSelection();

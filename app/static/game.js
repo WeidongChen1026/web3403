@@ -61,7 +61,7 @@
             $("#tips").text("Congratulations!!!");//TODO:把结果补全,在通关之后把结果打印到div中
             document.getElementById("result").innerHTML="Guess number <br> The number I guessed is(加入猜了的数字)," +
                 " and there is still (还剩几次) chances remain";
-            var share = document.createElement("share");
+            var share = document.createElement("button");
             share.type = button;
             share.id = 'share';
             share.value = "Share result!"
