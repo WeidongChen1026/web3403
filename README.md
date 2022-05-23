@@ -4,3 +4,5 @@ Run flask and type 127.0.0.1:5000 in the navigation bar in the browser, and ente
 
 The design of the application is concise. Users can access the page they want without any difficulty.The nav bar at the top of the web page has a clear instruction for users want to redirect to specific page.
 We aimed at user managment and result recording when developing, and show more functions to users as simple as we can.The rule of the game will be posted at the initial page so that the user can have a clear impression on our game.
+
+To run the test of the application, find corresponding file and run it the program will run the application automatically. It is about register an user account and sign in to the game.
