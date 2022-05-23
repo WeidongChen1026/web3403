@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <h1>Hello! Welcome to Guess Number.</h1><br>
+{#  TODO:add the game rules here#}
+  <hr>
+  <br>
+  <br>
+  <br>
+  <div style="text-align:center">
+    <a href="{{ url_for('login') }}", style="text-decoration: none; color: #c7254e"><button>Click here to Login!</button></a>
+    <p style="font-size: 23px;">This game is a puzzle game, for users to relieve stress and pass the time in their free time.</p>
+  </div>
+    <p style="color: rgb(190, 236, 40)">Game rules:    <br>
+      1. New users need to register an account, and please remember your account and password  <br>
+      2. After entering the game, the system will automatically generate a random number, the range of the random number is between 1-99, and the user needs to guess within this range.  <br>
+      3. If the guessed number is too large or too small, the system will automatically prompt you, you only need to modify it according to the prompt.  <br>
+      4. There are 3 modes in this game, the easy mode has 10 chances to guess, the hard mode has 5 chances, and the difficult mode has 2 chances.  <br>
+      5. You need to guess the number correctly before the number of times is 0. If you guess correctly, you can add one point. If you guess wrong, no points will be awarded.  <br>
+      6. If you like our game, please play with your friends and see who can guess more times!</p>
+
+
+</body>
+</html>
